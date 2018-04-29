@@ -4,11 +4,15 @@ import { MaterializeModule } from "angular2-materialize";
 
 
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
