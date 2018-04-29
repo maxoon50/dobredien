@@ -7,16 +7,21 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { UserListComponent } from './sidebar/user-list/user-list.component';
-import { UserComponent } from './sidebar/user/user.component';
+import { UserComponent } from './sidebar/user-list/user/user.component';
+import {Routes} from "@angular/router";
+import { LoginComponent } from './login/login.component';
 
-
+const appRoutes: Routes = [
+  { path: '/chat', component: AppComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     MainComponent,
     UserListComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
