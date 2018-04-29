@@ -11,6 +11,8 @@ import { UserComponent } from './main/sidebar/user-list/user/user.component';
 import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './main/messages/messages.component';
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -29,7 +31,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     MaterializeModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
