@@ -8,11 +8,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { UserListComponent } from './sidebar/user-list/user-list.component';
 import { UserComponent } from './sidebar/user-list/user/user.component';
-import {Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: '/chat', component: AppComponent}
+  { path: '', component: LoginComponent},
+  { path: 'chat', component: SidebarComponent}
 ];
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    MaterializeModule
+    MaterializeModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
