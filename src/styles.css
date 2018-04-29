@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+html, body{
+  height: 100% !important;
+}
+
+body{
+  padding: 0px !important;
+  margin: 0px !important;
+}/* You can add global styles to this file, and also import other style files */
+
+.full-height{
+  height: 100%;
+}
+.p-sm{
+  padding: 10px !important;
+}
+.p-m{
+  padding: 20px !important;
+}
+.p-l{
+  padding: 30px !important;
+}
+.p-xl{
+  padding: 40px !important;
+}
