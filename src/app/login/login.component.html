@@ -1,7 +1,7 @@
 
     <div class="container">
       <div class="z-depth-1 grey lighten-4 row cont-login">
-
+        <div *ngIf="failedAuthent" class="alert-blue" [innerText]="errorText"></div>
         <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm">
 
           <div class='row'>

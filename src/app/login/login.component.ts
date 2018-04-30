@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
-import {Observable} from "rxjs/Observable";
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,8 @@ import {Observable} from "rxjs/Observable";
 export class LoginComponent implements OnInit {
 
   constructor(private serverService: ServerService) {}
-
+  failedAuthent = false;
+  errorText;
   ngOnInit() {
   }
 
@@ -19,13 +20,16 @@ export class LoginComponent implements OnInit {
     this.serverService.authenticate(form.value.pseudo, form.value.password).subscribe(
     (response) => {
        if(response['error']){
-         console.log('il y a une erreur bb');
+         this.errorText = "erreur login / mot de passe";
+         this.failedAuthent = true;
        }else{
-         console.log('authentifié bb');
+         this.failedAuthent = false;
+         console.log(response);
        }
     },
     (error) => {
-       console.log(error);
+        this.failedAuthent = true;
+        this.errorText = "erreur veuillez contacter l'administrateur";
     })
   }
 

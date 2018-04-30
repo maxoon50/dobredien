@@ -22,3 +22,10 @@ body{
 .p-xl{
   padding: 40px !important;
 }
+.alert-blue{
+  text-align: center;
+  background-color: lightblue;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 5px;
+}
