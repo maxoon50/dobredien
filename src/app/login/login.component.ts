@@ -16,16 +16,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.serverService.getUser(form.value.pseudo).subscribe(
-      (response) => {
-        if(response['_password'] == form.value.password ) {
-          console.log('oki');
-        }else{
-          console.log('pas oki');
-        }
-      }, (error) =>{
-        return(error);
-      });
+    this.serverService.authenticate(form.value.pseudo, form.value.password).subscribe(
+    (response) => {
+       if(response['error']){
+         console.log('il y a une erreur bb');
+       }else{
+         console.log('authentifié bb');
+       }
+    },
+    (error) => {
+       console.log(error);
+    })
   }
 
 

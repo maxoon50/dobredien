@@ -17,4 +17,14 @@ export class ServerService {
     return this.http.get(url, options);
   }
 
+  authenticate(pseudo: string, password: string){
+    let url = API_URL+'/user/authenticate';
+    let data = {pseudo, password };
+    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    let options =  {
+      headers: headers
+    };
+    return this.http.post(url,data, options);
+  }
+
 }
