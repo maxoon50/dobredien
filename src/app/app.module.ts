@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './main/messages/messages.component';
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
+import {ServerService} from "../services/server.service";
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -33,9 +35,9 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

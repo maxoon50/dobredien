@@ -1,5 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {ServerService} from "../../services/server.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,24 @@ import {NgForm} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serverService: ServerService) {}
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-console.log(form.value);
+    this.serverService.getUser(form.value.pseudo).subscribe(
+      (response) => {
+        if(response['_password'] == form.value.password ) {
+          console.log('oki');
+        }else{
+          console.log('pas oki');
+        }
+      }, (error) =>{
+        return(error);
+      });
   }
+
+
 
 }
