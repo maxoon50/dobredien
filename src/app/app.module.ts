@@ -12,9 +12,9 @@ import {RouterModule, Routes} from "@angular/router";
 import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './main/messages/messages.component';
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
 import {ServerService} from "../services/server.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {InterceptorHttpService} from "../services/interceptorHttp.service";
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -37,7 +37,12 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [ServerService],
+  providers: [ServerService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorHttpService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

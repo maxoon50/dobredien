@@ -10,17 +10,13 @@ export class ServerService {
 
   getUser(arg: any) {
     let url = API_URL+'/user/'+arg;
-    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    let options =  {
-      headers: headers
-    };
-    return this.http.get(url, options);
+    return this.http.get(url);
   }
 
   authenticate(pseudo: string, password: string){
     let url = API_URL+'/user/authenticate';
     let data = {pseudo, password };
-    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+      let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let options =  {
       headers: headers
     };

@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
          this.failedAuthent = true;
        }else{
          this.failedAuthent = false;
-         console.log(response);
+         localStorage.setItem('currentUser', JSON.stringify({ token: response['token'], user: response['user'] }));
+         this.serverService.getUser('maxoon').subscribe((response) => {
+           console.log(response);
+         })
        }
     },
     (error) => {
