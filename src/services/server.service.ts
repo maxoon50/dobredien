@@ -16,11 +16,7 @@ export class ServerService {
   authenticate(pseudo: string, password: string){
     let url = API_URL+'/user/authenticate';
     let data = {pseudo, password };
-      let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let options =  {
-      headers: headers
-    };
-    return this.http.post(url,data, options);
+    return this.http.post(url,data);
   }
 
 }

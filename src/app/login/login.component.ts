@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private serverService: ServerService) {}
   failedAuthent = false;
-  errorText;
+  errorText= '';
   ngOnInit() {
   }
 
