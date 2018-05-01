@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
-
+import {ChatService} from "../../services/chatService";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ChatService]
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serverService: ServerService) {}
+  constructor(private serverService: ServerService, private chat: ChatService) {}
   failedAuthent = false;
   errorText= '';
   ngOnInit() {
@@ -33,7 +34,13 @@ export class LoginComponent implements OnInit {
     (error) => {
         this.failedAuthent = true;
         this.errorText = "erreur veuillez contacter l'administrateur";
-    })
+    });
+    this.chat.connect();
+    this.chat.sendMessage('yo le serveur');
+    //provoque bug à voir
+/*  this.chat.getMessage().subscribe((msg) => {
+    console.log(msg);
+  });*/
   }
 
 
