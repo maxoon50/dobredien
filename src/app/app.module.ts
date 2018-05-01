@@ -16,6 +16,7 @@ import {ServerService} from "../services/server.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorHttpService} from "../services/interceptorHttp.service";
 import {AuthService} from "../services/authService";
+import {JwtInterceptor} from "../services/JWTInterceptor";
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -43,6 +44,11 @@ const appRoutes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorHttpService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true
     },
   AuthService

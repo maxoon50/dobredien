@@ -13,11 +13,11 @@ export class InterceptorHttpService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if(localStorage.getItem('currentUser') !== null){
+    if( this.auth.getToken()!== null){
          const headers = new HttpHeaders({
             'x-access-token': this.auth.getToken()
          });
-      req = req.clone({ headers });
+      req = req.clone({headers});
     }
 
     return next.handle(req);
