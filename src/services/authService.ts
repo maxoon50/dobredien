@@ -15,8 +15,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
-    console.log(helper.getTokenExpirationDate(token));
-    return helper.isTokenExpired(token);
+    return !helper.isTokenExpired(token);
   }
 
 

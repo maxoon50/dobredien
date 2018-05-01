@@ -15,6 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {ServerService} from "../services/server.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorHttpService} from "../services/interceptorHttp.service";
+import {AuthService} from "../services/authService";
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -37,12 +38,15 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [ServerService,
+  providers: [
+    ServerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorHttpService,
       multi: true
-    }],
+    },
+  AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
