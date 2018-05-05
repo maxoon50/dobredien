@@ -41,6 +41,10 @@ export class ChatService {
     this._socket.emit('userLogout', user);
   }
 
+  public connect(user: User) {
+    this._socket.emit('userLogin', user);
+  }
+
   get socket() {
     return this._socket;
   }

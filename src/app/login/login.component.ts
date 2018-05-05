@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
 import {Router} from '@angular/router';
+import {ChatService} from '../../services/chatService';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serverService: ServerService,  private router: Router) {}
+  constructor(private serverService: ServerService,  private router: Router, private socket: ChatService) {}
   failedAuthent = false;
   errorText = '';
 
@@ -26,9 +27,9 @@ export class LoginComponent implements OnInit {
        } else {
          this.failedAuthent = false;
          localStorage.setItem('currentUser', JSON.stringify({ token: response['token'], user: response['user'] }));
-         this.serverService.getUser('maxoon').subscribe((response) => {
-           console.log(response);
+         this.serverService.getUser('maxoon').subscribe((res) => {
            this.router.navigate(['/chat']);
+           this.socket.connect(response['user']);
          });
        }
     },

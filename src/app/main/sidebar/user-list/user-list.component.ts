@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../../bo/User";
 import {ServerService} from '../../../../services/server.service';
 import {ChatService} from '../../../../services/chatService';
 
@@ -24,10 +23,18 @@ export class UserListComponent implements OnInit {
       });
     });
 
-    this.socket.onEventWithData('userLogout').subscribe((result) => {
+    this.socket.onEventWithData('userLogout').subscribe((result: any) => {
       for (let i = 0; i < this.userList.length; i++ ) {
         if (this.userList[i]['_id'] === result.user._id ) {
           this.userList[i]['_online'] = false;
+        }
+      }
+    });
+
+    this.socket.onEventWithData('userLogin').subscribe((result: any) => {
+      for (let i = 0; i < this.userList.length; i++ ) {
+        if (this.userList[i]['_id'] === result.user._id ) {
+          this.userList[i]['_online'] = true;
         }
       }
     });
