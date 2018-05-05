@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
+import {ChatService} from '../services/chatService';
+import {User} from '../bo/User';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private socket: ChatService) {}
+
+  ngOnInit() {
+    this.socket.initSocket();
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler(event) {
+    let user: any = JSON.parse(localStorage.getItem('currentUser'));
+    if (user != null) {
+      this.socket.disconnect(user.user);
+    }
+  }
+
+
+
+
 }

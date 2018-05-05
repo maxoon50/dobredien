@@ -1,14 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
-import {ChatService} from "../../services/chatService";
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ChatService]
 })
 export class LoginComponent implements OnInit {
 
@@ -39,6 +37,5 @@ export class LoginComponent implements OnInit {
         this.errorText = "erreur veuillez contacter l'administrateur";
     });
   }
-
 
 }
