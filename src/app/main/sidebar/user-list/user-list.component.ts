@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../../../../bo/User";
 import {ServerService} from '../../../../services/server.service';
 import {ChatService} from '../../../../services/chatService';
 

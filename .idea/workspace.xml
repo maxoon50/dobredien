@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e453eb9-3b0a-4dc4-a514-754f7ad74a13" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main/sidebar/user-list/user-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main/sidebar/user-list/user-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/chatService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/chatService.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,8 +40,8 @@
       <file leaf-file-name="user-list.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/main/sidebar/user-list/user-list.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="50" selection-start-column="50" selection-end-column="50" />
+            <state relative-caret-position="23">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -323,12 +321,12 @@
       <option name="presentableId" value="Default" />
       <updated>1524991329437</updated>
       <workItem from="1524991331414" duration="30739000" />
-      <workItem from="1525537790540" duration="14703000" />
+      <workItem from="1525537790540" duration="14819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57876000" />
+    <option name="totallyTimeSpent" value="57992000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1276" height="800" extended-state="0" />
@@ -729,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/main/sidebar/user-list/user-list.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="50" selection-start-column="50" selection-end-column="50" />
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="41" />
         </state>
       </provider>
     </entry>
