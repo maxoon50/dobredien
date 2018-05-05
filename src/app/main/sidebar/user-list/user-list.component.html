@@ -1,4 +1,6 @@
-<div *ngFor="let user of userList">
-  <p>{{user._pseudo}}</p>
 
-</div>
+  <p  *ngFor="let user of userList"
+    [ngClass]="{online: user._online === true}"
+  >{{user._pseudo}}</p>
+
+
