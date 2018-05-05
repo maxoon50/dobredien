@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
 import {ChatService} from "../../services/chatService";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {ChatService} from "../../services/chatService";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serverService: ServerService, private socket: ChatService) {}
+  constructor(private serverService: ServerService,  private router: Router) {}
   failedAuthent = false;
   errorText = '';
 
@@ -21,14 +22,15 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.serverService.authenticate(form.value.pseudo, form.value.password).subscribe(
     (response) => {
-       if(response['error']){
+       if (response['error']) {
          this.errorText = "erreur login / mot de passe";
          this.failedAuthent = true;
-       }else{
+       } else {
          this.failedAuthent = false;
          localStorage.setItem('currentUser', JSON.stringify({ token: response['token'], user: response['user'] }));
          this.serverService.getUser('maxoon').subscribe((response) => {
            console.log(response);
+           this.router.navigate(['/chat']);
          });
        }
     },

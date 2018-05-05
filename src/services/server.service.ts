@@ -13,6 +13,11 @@ export class ServerService {
     return this.http.get(url);
   }
 
+  getUsers() {
+    let url = API_URL+'/user/';
+    return this.http.get(url);
+  }
+
   authenticate(pseudo: string, password: string){
     let url = API_URL+'/user/authenticate';
     let data = {pseudo, password };
