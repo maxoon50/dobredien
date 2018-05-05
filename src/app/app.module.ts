@@ -17,6 +17,11 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorHttpService} from "../services/interceptorHttp.service";
 import {AuthService} from "../services/authService";
 import {JwtInterceptor} from "../services/JWTInterceptor";
+import { NgIoModule, NgIoConfig } from 'ng-io';
+import {ChatService} from '../services/chatService';
+
+
+const config: NgIoConfig = { url: 'http://localhost:3000', options: {} };
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgIoModule.forRoot(config)
   ],
   providers: [
     ServerService,
@@ -51,7 +57,8 @@ const appRoutes: Routes = [
       useClass: JwtInterceptor,
       multi: true
     },
-  AuthService
+    AuthService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })
