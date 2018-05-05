@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
-import { SocketIo } from 'ng-io';
+import { Observable } from 'rxjs/Observable';
+
+
+import * as socketIo from 'socket.io-client';
+
+const SERVER_URL = 'http://localhost:3000';
 
 @Injectable()
 export class ChatService {
+  private socket;
 
-  constructor(private socket: SocketIo) { }
-
-  sendMessage(msg: string){
-    this.socket.emit("msg", msg);
+  public initSocket(): void {
+    this.socket = socketIo(SERVER_URL);
   }
 
-  connect(){
-    this.socket.connect();
+  public send(message: any): void {
+    this.socket.emit('msg', message);
   }
 
-  getMessage() {
-    return this.socket
-      .fromEvent("msg")
-      .map( data => data);
+  public onMessage(): Observable<any> {
+    return new Observable<any>(observer => {
+      this.socket.on('msg', (data: any) => observer.next(data));
+    });
+  }
+
+  public onEvent(event: any): Observable<any> {
+    return new Observable<Event>(observer => {
+      this.socket.on(event, () => observer.next());
+    });
   }
 }

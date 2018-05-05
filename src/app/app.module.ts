@@ -18,7 +18,7 @@ import {InterceptorHttpService} from "../services/interceptorHttp.service";
 import {AuthService} from "../services/authService";
 import {JwtInterceptor} from "../services/JWTInterceptor";
 import { NgIoModule, NgIoConfig } from 'ng-io';
-import {ChatService} from "../services/chatService";
+import {ChatService} from '../services/chatService';
 
 
 const config: NgIoConfig = { url: 'http://localhost:3000', options: {} };
