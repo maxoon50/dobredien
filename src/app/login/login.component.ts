@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
        } else {
          this.failedAuthent = false;
          localStorage.setItem('currentUser', JSON.stringify({ token: response['token'], user: response['user'] }));
-         this.serverService.getUser('maxoon').subscribe((res) => {
+         this.serverService.getUser(form.value.pseudo).subscribe((res) => {
            this.router.navigate(['/chat']);
            this.socket.connect(response['user']);
          });
