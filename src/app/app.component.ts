@@ -9,7 +9,7 @@ import {User} from '../bo/User';
 })
 export class AppComponent {
   title = 'app';
-  nbreReload = 0;
+
   constructor(private socket: ChatService) {}
 
   ngOnInit() {
@@ -19,15 +19,10 @@ export class AppComponent {
  */
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    if (this.nbreReload === 0 || performance.navigation.type === 1) {
-      this.nbreReload++;
-    } else {
-      let user: any = JSON.parse(localStorage.getItem('currentUser'));
-      if (user != null) {
-        this.socket.disconnect(user.user);
-      }
+    let user: any = JSON.parse(localStorage.getItem('currentUser'));
+    if (user != null) {
+      this.socket.disconnect(user.user);
     }
   }
-
 
 }
