@@ -19,6 +19,7 @@ import {AuthService} from "../services/authService";
 import {JwtInterceptor} from "../services/JWTInterceptor";
 import { NgIoModule, NgIoConfig } from 'ng-io';
 import {ChatService} from '../services/chatService';
+import {LocalStorageService} from '../services/localStorageService';
 
 
 const config: NgIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
       multi: true
     },
     AuthService,
-    ChatService
+    ChatService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

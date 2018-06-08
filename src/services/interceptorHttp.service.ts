@@ -13,7 +13,7 @@ export class InterceptorHttpService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if( this.auth.getToken()!== null){
+    if ( this.auth.getToken() ) {
          const headers = new HttpHeaders({
             'x-access-token': this.auth.getToken()
          });

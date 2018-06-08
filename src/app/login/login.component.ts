@@ -3,6 +3,8 @@ import {NgForm} from "@angular/forms";
 import {ServerService} from "../../services/server.service";
 import {Router} from '@angular/router';
 import {ChatService} from '../../services/chatService';
+import {AuthService} from '../../services/authService';
+import {LocalStorageService} from '../../services/localStorageService';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +13,19 @@ import {ChatService} from '../../services/chatService';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private serverService: ServerService,  private router: Router, private socket: ChatService) {}
+  constructor(private serverService: ServerService,
+              private router: Router,
+              private socket: ChatService,
+              private authService: AuthService,
+              private localStorageService: LocalStorageService
+  ) {}
   failedAuthent = false;
   errorText = '';
 
   ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/chat']);
+    }
   }
 
   onSubmit(form: NgForm) {
@@ -26,7 +36,7 @@ export class LoginComponent implements OnInit {
          this.failedAuthent = true;
        } else {
          this.failedAuthent = false;
-         localStorage.setItem('currentUser', JSON.stringify({ token: response['token'], user: response['user'] }));
+         this.localStorageService.setItem('currentUser', { token: response['token'], user: response['user'] });
          this.serverService.getUser(form.value.pseudo).subscribe((res) => {
            this.router.navigate(['/chat']);
            this.socket.connect(response['user']);
