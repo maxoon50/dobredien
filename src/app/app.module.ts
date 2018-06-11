@@ -17,12 +17,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {InterceptorHttpService} from "../services/interceptorHttp.service";
 import {AuthService} from "../services/authService";
 import {JwtInterceptor} from "../services/JWTInterceptor";
-import { NgIoModule, NgIoConfig } from 'ng-io';
 import {ChatService} from '../services/chatService';
 import {LocalStorageService} from '../services/localStorageService';
+import {UserListService} from '../services/userListService';
 
-
-const config: NgIoConfig = { url: 'http://localhost:3000', options: {} };
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent},
@@ -43,8 +41,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule,
-    NgIoModule.forRoot(config)
+    HttpClientModule
   ],
   providers: [
     ServerService,
@@ -60,7 +57,8 @@ const appRoutes: Routes = [
     },
     AuthService,
     ChatService,
-    LocalStorageService
+    LocalStorageService,
+    UserListService
   ],
   bootstrap: [AppComponent]
 })

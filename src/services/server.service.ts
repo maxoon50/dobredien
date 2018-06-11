@@ -18,6 +18,11 @@ export class ServerService {
     return this.http.get(url);
   }
 
+  getUsersOnline() {
+    let url = API_URL+'/user/onlines';
+    return this.http.get(url);
+  }
+
   authenticate(pseudo: string, password: string){
     let url = API_URL+'/user/authenticate';
     let data = {pseudo, password };
